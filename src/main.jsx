@@ -9,7 +9,7 @@ import Loginpage from './pages/Loginpage.jsx'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import RegisterUserPage from './pages/registerUserPage.jsx'
+import RegisterUserPage from './pages/RegisterUserPage.jsx'
 import Homepage from './pages/Homepage.jsx'
 import AdminDashBoardLayout from './pages/Admin/AdminDashBoardLayout.jsx'
 import Overview from './pages/Admin/Overview.jsx'
