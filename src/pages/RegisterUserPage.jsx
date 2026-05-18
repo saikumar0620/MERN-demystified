@@ -1,32 +1,30 @@
-
 import PrimaryButton from '../components/Primarybutton'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router-dom'
 import AppwriteAccount from '../Appwrite-services/AppwriteAccount'
 import { useReducer } from 'react'
-
-import { useNavigate } from 'react-router'
 import { Bounce, toast } from 'react-toastify'
 
+const appwriteAccount = new AppwriteAccount()
 
 const initialState = {
   name: "",
   email: "",
   password: "",
-  confirmPassword: "",
+  confirmPassword: "", // Fixed typo from 'conformPassword'
   isSubmitting: false,
-  error:null
+  error: null
 }
 
 function reducer(state, action) {
   switch (action.type) {
     case "SET_FIELD":
-      return {...state,[action.field]: action.value}
+      return { ...state, [action.field]: action.value }
     case "SUBMIT_START":
-      return {...state,isSubmitting: true,error:null}
+      return { ...state, isSubmitting: true, error: null }
     case "SUBMIT_SUCCESS":
-      return {...state,isSubmitting: false,error:null}
+      return { ...state, isSubmitting: false, error: null }
     case "SUBMIT_ERROR":
-      return {...state,isSubmitting: false,error: action.error}
+      return { ...state, isSubmitting: false, error: action.error }
     default:
       return state;
   }
@@ -34,26 +32,25 @@ function reducer(state, action) {
 const RegisterUserPage = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const navigate = useNavigate()
-  const appwriteAccount = new AppwriteAccount()
 
   const registerNewUser = async (event) => {
     try {
       event.preventDefault();
-      dispatch({type: "SUBMIT_START"})
+      dispatch({ type: "SUBMIT_START" })
 
       if (state.password !== state.confirmPassword) {
         throw new Error("Passwords do not match!");
       }
 
-      const newUserData = {name: state.name,email: state.email,password: state.password}
+      const newUserData = { name: state.name, email: state.email, password: state.password }
       const newuserResponse = await appwriteAccount.createNewUser(newUserData)
       if (newuserResponse?.$id) {
-        dispatch({type: "SUBMIT_SUCCESS"})
+        dispatch({ type: "SUBMIT_SUCCESS" })
         navigate("/login")
       }
       console.log(newuserResponse)
     } catch (error) {
-      dispatch({type: "SUBMIT_ERROR", error: error.message})
+      dispatch({ type: "SUBMIT_ERROR", error: error.message })
       toast.error('Registration failed: ' + error.message, {
         position: "top-right",
         autoClose: 5000,
@@ -70,8 +67,8 @@ const RegisterUserPage = () => {
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md transform transition-all duration-300 animate-in fade-in zoom-in duration-500">
-        <form 
-          className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-3xl shadow-2xl flex flex-col gap-5" 
+        <form
+          className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-3xl shadow-2xl flex flex-col gap-5"
           onSubmit={registerNewUser}>
           <div className="text-center mb-2">
             <h1 className="text-2xl font-bold text-white tracking-tight">Create Account</h1>
@@ -79,42 +76,42 @@ const RegisterUserPage = () => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <input 
+            <input
               className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-              onChange={(event) => dispatch({type: "SET_FIELD", field: "name", value: event.target.value})} 
-              value={state.name} 
-              type="text" 
-              placeholder="Full Name.." 
+              onChange={(event) => dispatch({ type: "SET_FIELD", field: "name", value: event.target.value })}
+              value={state.name}
+              type="text"
+              placeholder="Full Name.."
               required />
-            
-            <input 
+
+            <input
               className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-              onChange={(event) => dispatch({type: "SET_FIELD", field: "email", value: event.target.value})} 
-              value={state.email} 
-              type="email" 
-              placeholder="@Email Address..." 
+              onChange={(event) => dispatch({ type: "SET_FIELD", field: "email", value: event.target.value })}
+              value={state.email}
+              type="email"
+              placeholder="@Email Address..."
               required />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input 
+              <input
                 className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                onChange={(event) => dispatch({type: "SET_FIELD", field: "password", value: event.target.value})} 
-                value={state.password} 
-                type="password" 
-                placeholder="Password.." 
+                onChange={(event) => dispatch({ type: "SET_FIELD", field: "password", value: event.target.value })}
+                value={state.password}
+                type="password"
+                placeholder="Password.."
                 required />
-              <input 
+              <input
                 className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                onChange={(event) => dispatch({type: "SET_FIELD", field: "confirmPassword", value: event.target.value})} 
-                value={state.confirmPassword} 
-                type="password" 
-                placeholder="Confirm your password..." 
+                onChange={(event) => dispatch({ type: "SET_FIELD", field: "confirmPassword", value: event.target.value })}
+                value={state.confirmPassword} // Fixed reference
+                type="password"
+                placeholder="Confirm your password..."
                 required />
             </div>
           </div>
 
-          <PrimaryButton 
-            type="submit" 
+          <PrimaryButton
+            type="submit"
             className="w-full py-3 bg-gradient-to-r from-purple-400 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-purple-500/25 transform hover:-translate-y-0.5 active:scale-95 transition-all"
             disabled={state.isSubmitting}
           >
@@ -137,14 +134,3 @@ const RegisterUserPage = () => {
 
 
 export default RegisterUserPage
-
-
-
-
-
-
-
-
-
-
-

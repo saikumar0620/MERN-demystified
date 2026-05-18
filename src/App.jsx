@@ -1,14 +1,12 @@
 import { useEffect } from 'react'
-import TodoApp from './components/TodoAppPages'
 import AppwriteAccount from './Appwrite-services/AppwriteAccount'
 import useUserStore from './stores/useUserStore';
-import {  Outlet, useNavigate } from 'react-router';
+import { Outlet, useNavigate } from 'react-router-dom';
 import AppHeader from './components/AppHeader';
 
-
+const appWriteAccount = new AppwriteAccount();
 
 function App() {
-  const appWriteAccount = new AppwriteAccount();
   const setUser = useUserStore((state) => state.setUser)
   const navigate = useNavigate();
 
@@ -28,10 +26,10 @@ function App() {
   }, [])
   return (
     <div>
-      <AppHeader/>
-    <main className='h-[92vh] '>
-      <Outlet/>
-    </main>
+      <AppHeader />
+      <main className='h-[92vh] '>
+        <Outlet />
+      </main>
 
     </div>
   )

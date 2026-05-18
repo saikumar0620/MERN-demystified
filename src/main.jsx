@@ -1,8 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import "./index.css"
-import { createBrowserRouter } from 'react-router'
-import { RouterProvider } from 'react-router/dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ProfilePage from './pages/ProfilePage.jsx'
 import TodoAppPages from './components/TodoAppPages.jsx'
 import Loginpage from './pages/Loginpage.jsx'
@@ -11,7 +10,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import RegisterUserPage from './pages/RegisterUserPage.jsx'
 import Homepage from './pages/Homepage.jsx'
-import AdminDashBoardLayout from './pages/Admin/AdminDashBoardLayout.jsx'
+// Change this to match the exact file name you verified in Step 1
+import AdminDashboardLayout from './pages/Admin/AdminDashboardLayout.jsx';
+
 import Overview from './pages/Admin/Overview.jsx'
 import Admincourses from './pages/Admin/Admincourses.jsx'
 import AdminQuizes from './pages/Admin/AdminQuizes.jsx'
@@ -23,11 +24,9 @@ import Counter from './pages/Admin/CounterPage.jsx'
 
 import { Provider } from "react-redux"
 import { store } from './app/store.js'
-// import Counters from './features/counter/Counter.jsx'
 import ProductPage from './pages/ProductPage.jsx'
-import CartPage from './pages/cartPage.jsx'
-
-// import App from './App.jsx'
+import CartPage from './pages/CartPage.jsx'
+import CounterPage from './pages/Admin/CounterPage.jsx'
 
 
 const router = createBrowserRouter([
@@ -49,16 +48,16 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/counter",
-        element: <Counter />
+        path: "counter",
+        element: <CounterPage />
       },
-      
+
       {
-        path: "/products",
+        path: "products",
         element: <ProductPage />
       },
       {
-        path: "/cart",
+        path: "cart",
         element: <CartPage />
       }
     ]
@@ -113,5 +112,3 @@ createRoot(rootDiv).render(
     </QueryClientProvider>
   </>
 );
-
-

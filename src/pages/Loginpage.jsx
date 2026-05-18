@@ -1,17 +1,16 @@
 import { useState } from "react"
-import { Link, useNavigate } from "react-router"
-
+import { Link, useNavigate } from "react-router-dom"
 
 import PrimaryButton from "../components/Primarybutton"
 import AppwriteAccount from "../Appwrite-services/AppwriteAccount"
 import { Bounce, toast } from "react-toastify"
 
+const appwriteAccount = new AppwriteAccount()
+
 const Loginpage = () => {
   const [email, setEmail] = useState("")
   const [password, setpassword] = useState("")
 
-
-  const appwriteAccount = new AppwriteAccount()
   const navigate = useNavigate()
 
   const loginUser = async (event) => {
@@ -94,7 +93,3 @@ const Loginpage = () => {
 }
 
 export default Loginpage
-
-
-
-
