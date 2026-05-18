@@ -10,9 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import RegisterUserPage from './pages/RegisterUserPage.jsx'
 import Homepage from './pages/Homepage.jsx'
-// Change this to match the exact file name you verified in Step 1
-import AdminDashboardLayout from './pages/Admin/AdminDashboardLayout.jsx';
-
+import AdminDashBoardLayout from './pages/Admin/AdminDashBoardLayout.jsx'
 import Overview from './pages/Admin/Overview.jsx'
 import Admincourses from './pages/Admin/Admincourses.jsx'
 import AdminQuizes from './pages/Admin/AdminQuizes.jsx'
@@ -20,6 +18,7 @@ import AdminTransactions from './pages/Admin/AdminTransactions.jsx'
 import { QueryClientProvider } from '@tanstack/react-query'
 import queryClient from './utils/queryClient.js'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import Counter from './pages/Admin/CounterPage.jsx'
 
 import { Provider } from "react-redux"
 import { store } from './app/store.js'
@@ -65,7 +64,7 @@ const router = createBrowserRouter([
 
   {
     path: "/admin-dashboard",
-    element: <AdminDashboardLayout />,
+    element: <AdminDashBoardLayout />,
     children: [
       {
         index: true,
