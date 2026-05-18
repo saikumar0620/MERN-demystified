@@ -1,0 +1,15 @@
+import { QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // Data stays fresh for 5 minutes
+      cacheTime: 1000 * 60 * 10, // Keep unused data in cache for 10 minutes
+      refetchOnWindowFocus: false, // Don't refetch when user returns to tab
+      refetchOnMount: false, // Don't refetch when component mounts if data is fresh
+      
+    },
+  },
+});
+
+export default queryClient;

@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Overriding 'blue' to a warm, organic Terracotta / Sunset palette */
+  --color-blue-50: #fff8f4;
+  --color-blue-100: #ffefe6;
+  --color-blue-200: #ffdac2;
+  --color-blue-300: #ffbc94;
+  --color-blue-400: #ff9359;
+  --color-blue-500: #ff7227;
+  --color-blue-600: #f05206;
+  --color-blue-700: #c73b07;
+  --color-blue-800: #9e2e0e;
+  --color-blue-900: #7e2810;
+  --color-blue-950: #441106;
+
+  /* Overriding 'slate' to a warm, earthy Sand / Stone palette */
+  --color-slate-50: #faf9f8;
+  --color-slate-100: #f3f1ee;
+  --color-slate-200: #e7e3de;
+  --color-slate-300: #d5cdc5;
+  --color-slate-400: #beb1a6;
+  --color-slate-500: #a8988a;
+  --color-slate-600: #9b8778;
+  --color-slate-700: #826f63;
+  --color-slate-800: #6b5c54;
+  --color-slate-900: #584d47;
+  --color-slate-950: #2e2825;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 selection:bg-blue-200 selection:text-blue-900;
+    font-family: 'Inter Tight', sans-serif;
+  }
+}
