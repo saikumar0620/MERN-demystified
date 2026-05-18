@@ -9,7 +9,7 @@ const appwriteAccount = new AppwriteAccount()
 
 const Loginpage = () => {
   const [email, setEmail] = useState("")
-  const [password, setpassword] = useState("")
+  const [password, setPassword] = useState("")
 
   const navigate = useNavigate()
 
@@ -38,10 +38,7 @@ const Loginpage = () => {
 
     } catch (error) {
       console.error(error);
-
-
-    } finally {
-      console.log("finally");
+      toast.error(error.message || "Login failed");
     }
   }
 
@@ -68,7 +65,7 @@ const Loginpage = () => {
             required
           />
           <input
-            onChange={(event) => setpassword(event.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
             value={password}
             type="password"
             placeholder="Password"

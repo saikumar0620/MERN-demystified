@@ -8,19 +8,16 @@ const appWriteAccount = new AppwriteAccount();
 
 const ProfilePage = () => {
   const currentUser = useUserStore((state) => state.user)
-  console.log(currentUser)
   const navigate = useNavigate();
 
-  const { data: todos, isLoading, isPending: isTodosPending, isFetching, error } = useQuery({
+  const { data: todos } = useQuery({
     queryKey: ["todos"],
     queryFn: fetchAllTodos
   })
-  // console.log("profile page redered")
 
   const handleLogout = async () => {
     try {
       const result = await appWriteAccount.logOutCurrentUser();
-      console.log(result);
       if (!result?.message) {
         navigate("/login")
       }
@@ -29,36 +26,7 @@ const ProfilePage = () => {
       console.error(error);
     }
   }
-  // return (
-  //   <div>
-  //     {currentUser?.name} <br />
-  //     <button className='text-white hover:italic hover:underline bg-red-500 p-3 border-3' onClick={handleLogout}>Logout</button>
 
-  //   </div>
-  // )
-
-
-  // design 2
-  //   return (
-  //   <div className="flex flex-col items-center justify-center gap-4 p-8 bg-gray-50 rounded-xl shadow-sm border border-gray-200 max-w-sm mx-auto">
-  //     <div className="flex flex-col items-center gap-1">
-  //       <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">Current User</span>
-  //       <h2 className="text-xl font-bold text-gray-800">{currentUser?.name || "Guest"}</h2>
-  //     </div>
-
-  //     <button 
-  //       className="w-full py-2.5 px-6 text-sm font-medium text-white bg-red-600 rounded-lg transition-all duration-200 
-  //      hover:bg-red-700 hover:shadow-md active:scale-95 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" 
-  //       onClick={handleLogout}
-  //     >
-  //       Logout
-  //     </button>
-  //   </div>
-  // )
-
-
-
-  //design -3
   return (<div className="group relative mx-auto max-w-sm overflow-hidden rounded-2xl border border-white/20 bg-white/80 p-[1px] shadow-2xl backdrop-blur-xl transition-all duration-500 hover:shadow-red-500/10">
     <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-transparent to-red-50/50 opacity-50" />
 
