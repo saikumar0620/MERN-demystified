@@ -20,7 +20,6 @@ import AdminTransactions from './pages/Admin/AdminTransactions.jsx'
 import { QueryClientProvider } from '@tanstack/react-query'
 import queryClient from './utils/queryClient.js'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import Counter from './pages/Admin/CounterPage.jsx'
 
 import { Provider } from "react-redux"
 import { store } from './app/store.js'
@@ -66,7 +65,7 @@ const router = createBrowserRouter([
 
   {
     path: "/admin-dashboard",
-    element: <AdminDashBoardLayout />,
+    element: <AdminDashboardLayout />,
     children: [
       {
         index: true,

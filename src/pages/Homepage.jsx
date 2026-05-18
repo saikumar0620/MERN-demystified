@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Sparkles, ListTodo, Shield, Layers } from 'lucide-react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Homepage = () => {
   return (
@@ -18,28 +18,28 @@ const Homepage = () => {
             <Sparkles size={14} className="text-blue-500" />
             <span>Handcrafted Workspace</span>
           </div>
-          
+
           <h1 className="text-5xl md:text-7xl font-black tracking-tight text-slate-900 leading-[1.05] mb-6">
             Organize your life. <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-amber-600">
               Without the noise.
             </span>
           </h1>
-          
+
           <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-xl leading-relaxed font-medium">
             A deliberately minimal MERN stack workspace. We stripped away the bloat so you can focus exclusively on what actually matters—getting things done.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 items-start">
-            <Link 
-              to="/todo" 
+            <Link
+              to="/todo"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-slate-900 text-white font-bold rounded-2xl shadow-lg hover:bg-slate-800 hover:shadow-xl hover:-translate-y-0.5 transition-all w-full sm:w-auto"
             >
               Open Todo App
               <ArrowRight size={18} />
             </Link>
-            <Link 
-              to="/profile" 
+            <Link
+              to="/profile"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-slate-700 font-bold rounded-2xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 transition-all w-full sm:w-auto shadow-sm"
             >
               My Profile

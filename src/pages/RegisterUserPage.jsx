@@ -103,7 +103,7 @@ const RegisterUserPage = () => {
               <input
                 className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                 onChange={(event) => dispatch({ type: "SET_FIELD", field: "confirmPassword", value: event.target.value })}
-                value={state.confirmPassword} // Fixed reference
+                value={state.confirmPassword}
                 type="password"
                 placeholder="Confirm your password..."
                 required />
